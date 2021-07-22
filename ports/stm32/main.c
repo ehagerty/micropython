@@ -32,8 +32,8 @@
 #include "py/gc.h"
 #include "py/mperrno.h"
 #include "py/mphal.h"
-#include "lib/mp-readline/readline.h"
-#include "lib/utils/pyexec.h"
+#include "shared/readline/readline.h"
+#include "shared/runtime/pyexec.h"
 #include "lib/oofatfs/ff.h"
 #include "lib/littlefs/lfs1.h"
 #include "lib/littlefs/lfs1_util.h"
@@ -404,7 +404,7 @@ void stm32_main(uint32_t reset_mode) {
     bool sdram_valid = true;
     UNUSED(sdram_valid);
     #if MICROPY_HW_SDRAM_STARTUP_TEST
-    sdram_valid = sdram_test(true);
+    sdram_valid = sdram_test(false);
     #endif
     #endif
     #if MICROPY_PY_THREAD
